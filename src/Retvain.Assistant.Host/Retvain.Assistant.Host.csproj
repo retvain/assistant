@@ -15,6 +15,11 @@
       <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Retvain.Assistant.Application\Retvain.Assistant.Application.csproj" />
     </ItemGroup>
 
 </Project>
