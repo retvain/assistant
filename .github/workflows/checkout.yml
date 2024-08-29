@@ -1,4 +1,4 @@
-name: Checkout Code
+name: "Checkout Code"
 
 on:
   push:

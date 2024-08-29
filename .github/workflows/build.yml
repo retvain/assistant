@@ -1,4 +1,4 @@
-name: Build Solution
+name: "Build Solution"
 
 on:
   workflow_run:
