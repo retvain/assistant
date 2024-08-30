@@ -1,13 +1,10 @@
 name: Build Solution
 
 on:
-  push:
-    branches:
-      - main
-      - feature/*
-  pull_request:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Checkout Code"]
+    types:
+      - completed
 
 jobs:
   build:
