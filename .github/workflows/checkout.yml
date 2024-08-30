@@ -1,4 +1,4 @@
-name: Checkout Code
+name: CI Pipeline
 
 on:
   push:
@@ -22,9 +22,10 @@ jobs:
         with:
           name: source-code
           path: .
-          
+
   build:
     runs-on: ubuntu-latest
+    needs: checkout  # Зависимость от checkout job
 
     steps:
       - name: Download source code
@@ -48,9 +49,10 @@ jobs:
         with:
           name: build-artifacts
           path: .
-          
+
   test:
     runs-on: ubuntu-latest
+    needs: build  # Зависимость от build job
 
     steps:
       - name: Download build artifacts
