@@ -6,8 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Retvain.Assistant.Domain.Primitives\Retvain.Assistant.Domain.Primitives.csproj" />
-    </ItemGroup>
-
 </Project>

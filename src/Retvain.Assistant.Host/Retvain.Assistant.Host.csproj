@@ -22,4 +22,8 @@
       <ProjectReference Include="..\Retvain.Assistant.Application\Retvain.Assistant.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Converters\" />
+    </ItemGroup>
+
 </Project>
