@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Retvain.Assistant.Domain.Command;
+using Retvain.Assistant.Domain;
 
 namespace Retvain.Assistant.Application.Commands.Root.Contracts;
 
-public sealed class RootCommand(Command command) : IRequest
+public sealed class RootCommand(CommandName? commandName) : IRequest
 {
-    public Command Command { get; } = command;
+    public CommandName? CommandName { get; } = commandName;
 }

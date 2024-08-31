@@ -2,16 +2,17 @@
 using Microsoft.Extensions.DependencyInjection;
 using Retvain.Assistant.Application.Commands.Root;
 using Retvain.Assistant.Application.Commands.Root.Contracts;
+using Retvain.Assistant.Application.Commands.Root.Services;
 
 namespace Retvain.Assistant.Application;
 
 public static class ApplicationServicesExtensions
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    public static void AddApplicationServices(this IServiceCollection services)
     {
+        services.AddSingleton<CommandResolver>();
+        
         AddMediatr(services);
-
-        return services;
     }
 
     private static void AddMediatr(IServiceCollection services)

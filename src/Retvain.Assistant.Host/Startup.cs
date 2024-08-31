@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Retvain.Assistant.Application;
 using Retvain.Assistant.Application.Commands.Root.Contracts;
 using Retvain.Assistant.Host.Services;
+using Retvain.Assistant.Repository;
 
 namespace Retvain.Assistant.Host;
 
@@ -14,10 +15,10 @@ internal static class Startup
     {
         using var scope = host.Services.CreateScope();
 
-        var command = ArgumentParserService.Parse(args);
+        var argument = ArgumentParserService.Parse(args);
 
         var mediatr = scope.ServiceProvider.GetRequiredService<IMediator>();
-        mediatr.Send(new RootCommand(command));
+        mediatr.Send(new RootCommand(argument));
     }
 
     internal static void ConfigureServices(IServiceCollection services)
@@ -25,6 +26,7 @@ internal static class Startup
         services.AddMediatR(typeof(ApplicationServicesExtensions).Assembly);
 
         services.AddApplicationServices();
+        services.AddRepositoryServices();
     }
 
     internal static void Configure(IHostBuilder builder)
