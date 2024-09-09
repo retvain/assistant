@@ -7,7 +7,7 @@ using Retvain.Assistant.Host;
 
 namespace Retvain.Assistant.IntegrationTests.Tools;
 
-public sealed class HostApplicationFactory<TEntryPoint> : WebApplicationFactory<TEntryPoint> 
+public sealed class HostApplicationFactory<TEntryPoint> : WebApplicationFactory<TEntryPoint>
     where TEntryPoint : class
 {
     private readonly Action<IWebHostBuilder> _configuration;

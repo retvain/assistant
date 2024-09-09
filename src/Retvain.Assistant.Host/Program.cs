@@ -6,7 +6,7 @@ public class Program
     public static async Task Main(string[] args)
     {
         var host = CreateHost(args);
-        
+
         await Startup.Run(host, args);
     }
 

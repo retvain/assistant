@@ -13,7 +13,7 @@ public sealed class SetUpGlobal
 
         Console.WriteLine("Setting up the test environment...");
     }
-    
+
     [OneTimeTearDown]
     public void TestTearDown()
     {

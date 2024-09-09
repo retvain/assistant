@@ -13,14 +13,14 @@ internal sealed class CommandStore : ICommandStore
 
     public IReadOnlyCollection<Command> GetAll()
     {
-        return _commands.Values.ToArray(); 
+        return _commands.Values.ToArray();
     }
 
     public Command? Get(CommandName commandName)
     {
         if (_commands.TryGetValue(commandName, out var command))
             return command;
-        
+
         return null;
     }
 }

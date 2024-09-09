@@ -28,7 +28,7 @@ public class Startup
         using var scope = host.Services.CreateScope();
         var argument = ArgumentParserService.Parse(args ?? Array.Empty<string>());
         var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
-        
+
         await mediator.Send(new RootCommand(argument));
     }
 }
