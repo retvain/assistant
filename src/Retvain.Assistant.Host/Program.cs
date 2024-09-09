@@ -1,15 +1,26 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Retvain.Assistant.Host;
 
-var builder = Host.CreateDefaultBuilder(args);
-
-builder.ConfigureServices((hostContext, services) =>
+public class Program
 {
-    Startup.ConfigureServices(services);
-});
+    public static async Task Main(string[] args)
+    {
+        var host = CreateHost(args);
+        
+        await Startup.Run(host, args);
+    }
 
-Startup.Configure(builder);
+    private static IHost CreateHost(string[] args)
+    {
+        var builder = CreateHostBuilder(args);
+        Startup.Configure(builder);
+        return builder.Build();
+    }
 
-var host = builder.Build();
-
-Startup.Run(host, args);
+    private static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureServices((hostContext, services) =>
+            {
+                Startup.ConfigureServices(services);
+            });
+}

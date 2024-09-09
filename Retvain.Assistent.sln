@@ -12,6 +12,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retvain.Assistant.Repositor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AE9541D3-C2BB-4370-A08E-C7D3003D254C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{ADEE8CAE-61C1-4CBC-B6D9-F87A30F7CF80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Retvain.Assistant.IntegrationTests", "tests\Retvain.Assistant.IntegrationTests\Retvain.Assistant.IntegrationTests.csproj", "{9614C82F-AF70-48F2-AB7E-7FA2F7A59B81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,10 @@ Global
 		{1A5EAEF4-FF25-433F-A8B4-753193A3D6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A5EAEF4-FF25-433F-A8B4-753193A3D6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A5EAEF4-FF25-433F-A8B4-753193A3D6F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9614C82F-AF70-48F2-AB7E-7FA2F7A59B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9614C82F-AF70-48F2-AB7E-7FA2F7A59B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9614C82F-AF70-48F2-AB7E-7FA2F7A59B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9614C82F-AF70-48F2-AB7E-7FA2F7A59B81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{37F8A371-549D-4A11-9CAD-911C3E35C03F} = {AE9541D3-C2BB-4370-A08E-C7D3003D254C}
