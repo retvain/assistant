@@ -11,7 +11,7 @@ public static class ApplicationServicesExtensions
     public static void AddApplicationServices(this IServiceCollection services)
     {
         services.AddSingleton<CommandResolver>();
-        
+
         AddMediatr(services);
     }
 

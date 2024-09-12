@@ -9,28 +9,26 @@ using Retvain.Assistant.Repository;
 
 namespace Retvain.Assistant.Host;
 
-internal static class Startup
+public class Startup
 {
-    internal static void Run(IHost host, string[]? args)
-    {
-        using var scope = host.Services.CreateScope();
-
-        var argument = ArgumentParserService.Parse(args);
-
-        var mediatr = scope.ServiceProvider.GetRequiredService<IMediator>();
-        mediatr.Send(new RootCommand(argument));
-    }
-
-    internal static void ConfigureServices(IServiceCollection services)
+    public static void ConfigureServices(IServiceCollection services)
     {
         services.AddMediatR(typeof(ApplicationServicesExtensions).Assembly);
-
         services.AddApplicationServices();
         services.AddRepositoryServices();
     }
 
-    internal static void Configure(IHostBuilder builder)
+    public static void Configure(IHostBuilder builder)
     {
         builder.ConfigureLogging(logging => { logging.AddConsole(); });
+    }
+
+    public static async Task Run(IHost host, string[]? args)
+    {
+        using var scope = host.Services.CreateScope();
+        var argument = ArgumentParserService.Parse(args ?? Array.Empty<string>());
+        var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
+
+        await mediator.Send(new RootCommand(argument));
     }
 }
