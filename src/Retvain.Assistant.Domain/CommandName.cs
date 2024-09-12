@@ -2,5 +2,6 @@
 
 public enum CommandName
 {
-    Help
+    Help,
+    PureS
 }

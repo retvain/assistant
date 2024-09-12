@@ -8,7 +8,8 @@ internal sealed class CommandStore : ICommandStore
     private readonly IReadOnlyDictionary<CommandName, Command> _commands =
         new Dictionary<CommandName, Command>
         {
-            { CommandName.Help, new Command(CommandName.Help) }
+            { CommandName.Help, new Command(CommandName.Help) },
+            { CommandName.PureS, new Command(CommandName.PureS) }
         };
 
     public IReadOnlyCollection<Command> GetAll()

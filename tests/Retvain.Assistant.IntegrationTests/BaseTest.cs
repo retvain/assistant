@@ -18,4 +18,13 @@ public abstract class BaseTest
 
         return await hostApplicationFactory.RunHostAsync(args);
     }
+
+    protected string CleanUp(string source)
+    {
+        var result = source
+            .Replace("\r", string.Empty)
+            .Replace("\n", string.Empty);
+
+        return result;
+    }
 }
