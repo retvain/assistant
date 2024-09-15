@@ -5,6 +5,7 @@ using Retvain.Assistant.Application.Commands.Help;
 using Retvain.Assistant.Application.Commands.Help.Contracts;
 using Retvain.Assistant.Application.Commands.PureS;
 using Retvain.Assistant.Application.Commands.PureS.Contracts;
+using Retvain.Assistant.Application.Commands.PureS.Services;
 
 namespace Retvain.Assistant.Application;
 
@@ -12,6 +13,8 @@ public static class ApplicationServicesExtensions
 {
     public static void AddApplicationServices(this IServiceCollection services)
     {
+        services.AddSingleton<PureServersService>();
+
         AddMediatr(services);
     }
 

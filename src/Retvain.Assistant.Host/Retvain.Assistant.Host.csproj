@@ -20,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Retvain.Assistant.Application\Retvain.Assistant.Application.csproj" />
+      <ProjectReference Include="..\Retvain.Assistant.Infrastructure\Retvain.Assistant.Infrastructure.csproj" />
       <ProjectReference Include="..\Retvain.Assistant.Repository\Retvain.Assistant.Repository.csproj" />
     </ItemGroup>
 

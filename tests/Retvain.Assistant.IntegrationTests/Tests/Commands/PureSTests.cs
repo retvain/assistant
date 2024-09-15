@@ -13,9 +13,9 @@ public sealed class PureSTests : BaseTest
     }
 
     [Test]
-    public async Task StatusOption()
+    public async Task ListOption()
     {
-        var output = await RunApp(["pures", "status"]);
-        CleanUp(output).Should().Be("status is checked");
+        var output = await RunApp(["pures", "list"]);
+        CleanUp(output).Should().Be("server1");
     }
 }

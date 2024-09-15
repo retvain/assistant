@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Retvain.Assistant.Application;
 using Retvain.Assistant.Host.Services;
+using Retvain.Assistant.Infrastructure;
 using Retvain.Assistant.Repository;
 
 namespace Retvain.Assistant.Host;
@@ -15,6 +16,7 @@ public class Startup
         services.AddMediatR(typeof(ApplicationServicesExtensions).Assembly);
         services.AddApplicationServices();
         services.AddRepositoryServices();
+        services.AddInfrastructureServices();
     }
 
     public static void Configure(IHostBuilder builder)

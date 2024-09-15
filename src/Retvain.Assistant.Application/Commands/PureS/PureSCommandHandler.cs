@@ -1,30 +1,38 @@
 ﻿using MediatR;
 using Retvain.Assistant.Application.Commands.PureS.Contracts;
+using Retvain.Assistant.Application.Commands.PureS.Services;
 
 namespace Retvain.Assistant.Application.Commands.PureS;
 
-internal sealed class PureSCommandHandler : IRequestHandler<PureSCommand, ICommandResult>
+internal sealed class PureSCommandHandler(PureServersService pureServersService) : IRequestHandler<PureSCommand, ICommandResult>
 {
-    private const string StatusOption = "status";
+    private const string ListOption = "list";
 
     public async Task<ICommandResult> Handle(PureSCommand command, CancellationToken cancellationToken)
     {
         if (command.OptionsIsEmpty())
-            return await Task.FromResult<ICommandResult>(new PureSResult("options required"));
+            return await ResultWith("options required");
 
         foreach (var option in command.Options!)
         {
             switch (option.Name)
             {
-                case StatusOption: return await Task.FromResult(GetStatus());
+                case ListOption: return await ResultWith(await GetList());
             }
         }
 
-        return await Task.FromResult<ICommandResult>(PureSResult.Empty());
+        return await ResultWith(string.Empty);
     }
 
-    private ICommandResult GetStatus()
+    private async Task<string> GetList()
     {
-        return new PureSResult("status is checked");
+        var servers = await pureServersService.GetServersList();
+
+        return string.Join(", ", servers);
+    }
+
+    private static async Task<ICommandResult> ResultWith(string result)
+    {
+        return await Task.FromResult<ICommandResult>(new PureSResult(result));
     }
 }
