@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Retvain.Assistant.Host;
 
-public class Program
+namespace Retvain.Assistant.Host;
+
+public static class Program
 {
     public static async Task Main(string[] args)
     {
@@ -18,7 +19,7 @@ public class Program
     }
 
     private static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
+        Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostContext, services) =>
             {
                 Startup.ConfigureServices(services);

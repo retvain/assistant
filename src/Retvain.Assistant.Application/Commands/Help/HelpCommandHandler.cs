@@ -1,21 +1,19 @@
-﻿using System.Windows.Input;
-using MediatR;
+﻿using MediatR;
 using Retvain.Assistant.Application.Commands.Help.Contracts;
 using Retvain.Assistant.Application.Ports;
 
 namespace Retvain.Assistant.Application.Commands.Help;
 
-internal sealed class HelpCommandHandler(ICommandStore commandStore) : IRequestHandler<HelpCommand>
+internal sealed class HelpCommandHandler(ICommandStore commandStore) : IRequestHandler<HelpCommand, ICommandResult>
 {
-    public async Task<Unit> Handle(HelpCommand request, CancellationToken cancellationToken)
+    public Task<ICommandResult> Handle(HelpCommand request, CancellationToken cancellationToken)
     {
         var availableCommandList = commandStore.GetAll();
 
-        Console.WriteLine($"list of available commands: {string.Join(
-                ", ",
-                availableCommandList.Select(x => x.Name.ToString().ToLower()))}."
-            );
+        var result = $"list of available commands: {string.Join(
+            ", ",
+            availableCommandList.Select(x => x.Name.ToString().ToLower()))}.";
 
-        return await Task.FromResult(Unit.Value);
+        return Task.FromResult<ICommandResult>(new HelpResult(result));
     }
 }
