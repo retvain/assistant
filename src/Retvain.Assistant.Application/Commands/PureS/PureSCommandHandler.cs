@@ -1,19 +1,30 @@
 ﻿using MediatR;
-using Retvain.Assistant.Application.Commands.Help.Contracts;
 using Retvain.Assistant.Application.Commands.PureS.Contracts;
 
 namespace Retvain.Assistant.Application.Commands.PureS;
 
-internal sealed class PureSCommandHandler(IMediator mediator) : IRequestHandler<PureSCommand, ICommandResult>
+internal sealed class PureSCommandHandler : IRequestHandler<PureSCommand, ICommandResult>
 {
-    public async Task<ICommandResult> Handle(PureSCommand request, CancellationToken cancellationToken)
+    private const string StatusOption = "status";
+
+    public async Task<ICommandResult> Handle(PureSCommand command, CancellationToken cancellationToken)
     {
-        var options = request.Options;
+        if (command.OptionsIsEmpty())
+            return await Task.FromResult<ICommandResult>(new PureSResult("options required"));
 
-        var result = string.Empty;
-        var output = await mediator.Send(new HelpCommand(), cancellationToken);
+        foreach (var option in command.Options!)
+        {
+            switch (option.Name)
+            {
+                case StatusOption: return await Task.FromResult(GetStatus());
+            }
+        }
 
+        return await Task.FromResult<ICommandResult>(PureSResult.Empty());
+    }
 
-        return PureSResult.Empty();
+    private ICommandResult GetStatus()
+    {
+        return new PureSResult("status is checked");
     }
 }

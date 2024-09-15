@@ -6,8 +6,6 @@ namespace Retvain.Assistant.IntegrationTests.Tests.Commands;
 
 public sealed class HelpTests : BaseTest
 {
-    private IFixture Fixture { get; } = new Fixture();
-
     [Test]
     public async Task HelpConsoleAppOutput()
     {

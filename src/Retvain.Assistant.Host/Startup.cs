@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Retvain.Assistant.Application;
-using Retvain.Assistant.Application.Commands;
 using Retvain.Assistant.Host.Services;
 using Retvain.Assistant.Repository;
 

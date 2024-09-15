@@ -14,11 +14,16 @@ internal static class ArgumentParser
     {
         var options = new Dictionary<string, string?>();
 
-        if (args == null || args.Length < 1)
+        if (args == null || args.Length < 2)
             return null;
 
         for (var i = 1; i < args.Length; i += 2)
-            options[args[i]] = args[i + 1];
+        {
+            var name = args[i];
+            var value = i + 1 < args.Length ? args[i + 1] : null;
+
+            options[name] = value;
+        }
 
         return options;
     }

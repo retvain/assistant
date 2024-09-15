@@ -11,7 +11,7 @@ internal static class CommandResolver
     public static IRequest<ICommandResult> Resolve(string commandName, IDictionary<string, string?>? options)
     {
         var commandIsFounded = Enum.TryParse<CommandName>(commandName, true, out var name);
-        
+
         return commandIsFounded ? GetCommandByName(name, options) : GetCommandByName(CommandName.Help);
     }
 
