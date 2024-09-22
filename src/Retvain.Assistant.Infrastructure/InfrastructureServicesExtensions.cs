@@ -6,8 +6,10 @@ namespace Retvain.Assistant.Infrastructure;
 
 public static class InfrastructureServicesExtensions
 {
-    public static void AddInfrastructureServices(this IServiceCollection services)
+    public static void AddInfrastructureServices(
+        this IServiceCollection services,
+        PureServersConfiguration pureServersConfiguration)
     {
-        services.AddSingleton<IPureServersClient, PureServersApiClient>();
+        services.AddSingleton<IPureServersClient>(s => new PureServersApiClient(pureServersConfiguration));
     }
 }

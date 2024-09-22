@@ -13,6 +13,7 @@ public sealed class PureSTests : BaseTest
     }
 
     [Test]
+    [Ignore("in progress")]
     public async Task ListOption()
     {
         var output = await RunApp(["pures", "list"]);

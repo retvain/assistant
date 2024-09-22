@@ -22,6 +22,8 @@ public static class Program
         Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostContext, services) =>
             {
-                Startup.ConfigureServices(services);
+                Startup.ConfigureServices(
+                    services,
+                    hostContext.Configuration);
             });
 }

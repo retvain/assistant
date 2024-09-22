@@ -24,4 +24,10 @@
       <ProjectReference Include="..\Retvain.Assistant.Repository\Retvain.Assistant.Repository.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
 </Project>
