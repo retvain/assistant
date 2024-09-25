@@ -4,8 +4,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Retvain.Assistant.Application;
+using Retvain.Assistant.Host.Caching;
 using Retvain.Assistant.Host.Services;
 using Retvain.Assistant.Infrastructure;
+using Retvain.Assistant.Infrastructure.Ports;
 using Retvain.Assistant.Infrastructure.PureServers;
 using Retvain.Assistant.Repository;
 
@@ -15,11 +17,13 @@ public class Startup
 {
     public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
+        services.AddSingleton<ICacheManager, JsonCacheManager>();
+
         services.AddMediatR(typeof(ApplicationServicesExtensions).Assembly);
-        
+
         services.AddApplicationServices();
         services.AddRepositoryServices();
-        
+
         var pureServersConfiguration = configuration
             .GetSection("PureServers")
             .Get<PureServersConfiguration>() ?? throw new InvalidOperationException("Configuration section 'PureServers' is missing or invalid.");

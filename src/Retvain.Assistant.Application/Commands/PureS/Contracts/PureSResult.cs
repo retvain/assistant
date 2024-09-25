@@ -6,9 +6,4 @@ internal sealed class PureSResult(string result) : ICommandResult
     {
         return result;
     }
-
-    public static PureSResult Empty()
-    {
-        return new PureSResult(string.Empty);
-    }
 }

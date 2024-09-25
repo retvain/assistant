@@ -2,10 +2,17 @@
 
 public sealed class PureServersConfiguration
 {
-    public HostsConfiguration Hosts { get; set; } = new HostsConfiguration();
+    public HostsConfiguration Hosts { get; init; } = new();
 
     public sealed class HostsConfiguration
     {
         public string Authorization { get; set; } = string.Empty;
+
+        public ServersConfiguration Servers { get; init; } = new();
+
+        public sealed class ServersConfiguration
+        {
+            public string List { get; set; } = string.Empty;
+        }
     }
 }

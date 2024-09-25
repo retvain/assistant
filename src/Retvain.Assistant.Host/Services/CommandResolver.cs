@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using System.Collections.Frozen;
+using MediatR;
 using Retvain.Assistant.Application.Commands;
 using Retvain.Assistant.Application.Commands.Help.Contracts;
 using Retvain.Assistant.Application.Commands.PureS.Contracts;
@@ -24,7 +25,7 @@ internal static class CommandResolver
         {
             [CommandName.Help] = new HelpCommand(commandOptions),
             [CommandName.PureS] = new PureSCommand(commandOptions)
-        };
+        }.ToFrozenDictionary();
 
         if (availableCommands.TryGetValue(commandName, out var command))
             return command;

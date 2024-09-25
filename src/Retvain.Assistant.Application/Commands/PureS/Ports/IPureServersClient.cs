@@ -1,6 +1,8 @@
-﻿namespace Retvain.Assistant.Application.Commands.PureS.Ports;
+﻿using Retvain.Assistant.Application.Commands.PureS.Contracts.Dto.Response;
+
+namespace Retvain.Assistant.Application.Commands.PureS.Ports;
 
 public interface IPureServersClient
 {
-    public Task<string> StartNewSession();
+    public Task<IReadOnlyCollection<Server>> GetServersList(CancellationToken cancellationToken);
 }

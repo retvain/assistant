@@ -8,7 +8,7 @@
     },
     "pures": {
       "commandName": "Project",
-      "commandLineArgs": "pures",
+      "commandLineArgs": "pures list",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"
       }

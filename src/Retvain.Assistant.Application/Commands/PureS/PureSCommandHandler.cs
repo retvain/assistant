@@ -4,7 +4,8 @@ using Retvain.Assistant.Application.Commands.PureS.Services;
 
 namespace Retvain.Assistant.Application.Commands.PureS;
 
-internal sealed class PureSCommandHandler(PureServersService pureServersService) : IRequestHandler<PureSCommand, ICommandResult>
+internal sealed class PureSCommandHandler(PureServersService pureServersService)
+    : IRequestHandler<PureSCommand, ICommandResult>
 {
     private const string ListOption = "list";
 
@@ -28,11 +29,9 @@ internal sealed class PureSCommandHandler(PureServersService pureServersService)
     {
         var servers = await pureServersService.GetServersList();
 
-        return string.Join(", ", servers);
+        return string.Join("\n\n", servers);
     }
 
     private static async Task<ICommandResult> ResultWith(string result)
-    {
-        return await Task.FromResult<ICommandResult>(new PureSResult(result));
-    }
+        => await Task.FromResult<ICommandResult>(new PureSResult(result));
 }

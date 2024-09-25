@@ -6,12 +6,11 @@ internal sealed class PureServersService(IPureServersClient pureServersClient)
 {
     public async Task<IReadOnlyCollection<string>> GetServersList()
     {
-        var session = await pureServersClient.StartNewSession();
-        
-        var servers = new List<string>();
+        var serversList = await pureServersClient.GetServersList(CancellationToken.None);
 
-        servers.Add("server1");
+        var servers = new List<string>(serversList.Count);
+        servers.AddRange(serversList.Select(server => server.ToString()));
 
-        return await Task.FromResult<IReadOnlyCollection<string>>(servers);
+        return servers;
     }
 }

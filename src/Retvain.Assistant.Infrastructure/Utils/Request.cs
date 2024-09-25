@@ -5,6 +5,6 @@ namespace Retvain.Assistant.Infrastructure.Utils;
 
 internal static class Request
 {
-    public static StringContent ToContent(object value)
+    public static StringContent ToHttpContent(object value)
         => new StringContent(JsonSerializer.Serialize(value), Encoding.UTF8, "application/json");
 }
