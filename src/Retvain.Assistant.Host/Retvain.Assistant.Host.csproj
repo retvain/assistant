@@ -7,6 +7,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    </PropertyGroup>
+
     <ItemGroup>
       <PackageReference Include="MediatR" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
