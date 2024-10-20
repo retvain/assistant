@@ -43,7 +43,7 @@ internal sealed class PureServersApiClient(
     {
         var currentSession = cacheManager.GetPureServersSession();
 
-        if (currentSession is not null && currentSession != string.Empty)
+        if (currentSession != string.Empty)
             return currentSession;
 
         return await StartNewSession();
@@ -69,13 +69,13 @@ internal sealed class PureServersApiClient(
         if (!responseContent.Contains(logged))
             throw new HttpRequestException($"Failed to authenticate: {responseContent}");
 
-        if (!response.Headers.TryGetValues(SessionHeaderKey, out var session))
+        if (!response.Headers.TryGetValues(SessionHeaderKey, out var sessions))
             throw new HttpRequestException($"Failed to get session: {responseContent}");
 
-        var newSession = session.First();
-        cacheManager.SetPureServersSession(newSession);
+        var session = sessions.First();
+        cacheManager.SetPureServersSession(session);
 
-        return newSession;
+        return cacheManager.GetPureServersSession();
     }
 
     private async Task<HttpResponseMessage> Get(string url, string session, CancellationToken token)

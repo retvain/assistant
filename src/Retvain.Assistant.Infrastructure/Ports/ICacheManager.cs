@@ -2,7 +2,7 @@
 
 public interface ICacheManager
 {
-    string? GetPureServersSession();
+    string GetPureServersSession();
 
     void SetPureServersSession(string session);
 }

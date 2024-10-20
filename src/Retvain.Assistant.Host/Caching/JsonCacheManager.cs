@@ -21,8 +21,8 @@ internal sealed class JsonCacheManager : ICacheManager
             _cacheData = new CacheData();
     }
 
-    public string? GetPureServersSession()
-        => _cacheData.Session;
+    public string GetPureServersSession()
+        => _cacheData.Session ?? string.Empty;
 
     public void SetPureServersSession(string session)
     {
